@@ -1,3 +1,4 @@
+import { env } from "./env"
 import { fastify } from "fastify"
 import { getAllPromptsRoute } from "./routes/get-all-prompts"
 import { uploadVideoRoute } from "./routes/upload-video"
@@ -17,7 +18,7 @@ app.register(createTranscriptionRoute)
 app.register(generateAICompletionRoute)
 
 app.listen({
-  port: 3333
+  port: env.PORT || 4000
 }).then(() => {
   console.log("HTTP Server Running!")
 })
