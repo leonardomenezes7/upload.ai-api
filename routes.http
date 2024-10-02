@@ -1,0 +1,39 @@
+# @name get-prompts
+GET http://localhost:3333/prompts
+
+###
+
+# @name upload
+POST http://localhost:3333/videos
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="prisma.mp3"
+Content-Type: audio/mpeg
+
+< ./prisma.mp3
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+
+# @name create-transcription
+
+POST http://localhost:3333/videos/8298e834-e90a-476d-a138-59648c0e7141/transcription
+Content-Type: application/json
+
+{
+  "prompt": "prisma, node"
+}
+
+###
+
+# @name generate-AI-completion
+
+POST http://localhost:3333/ai/complete
+Content-Type: application/json
+
+{
+  "videoId": "6ee1cabd-64ba-417d-9cc9-4b4bebf1f9aa",
+  "temperature": 0.5,
+  "template": "Gere um resumo sucinto da transcrição do vídeo informada a seguir: '''{transcription}'''"
+}
