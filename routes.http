@@ -1,5 +1,5 @@
 # @name get-prompts
-GET http://localhost:3333/prompts
+GET https://upload-ai-api-1yni.onrender.com/prompts
 
 ###
 
